@@ -1,0 +1,62 @@
+﻿@model GuildCars.Models.Tables.Contact
+
+@{
+    ViewBag.Title = "Contact Us";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="container">
+    <div class="row">
+        @if (TempData["Message"] != null)
+        {
+            <p class="alert alert-success"> @TempData["Message"] </p>
+        }
+        <div class="col-xs-12 col-md-4" id="contactForm">
+            
+            @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    <label>Name</label>
+                    @Html.TextBoxFor(m => m.ContactName, new { @class = "form-control", placeholder = "" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.ContactName)</span>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", placeholder = "" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.EmailAddress)</span>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    @Html.TextBoxFor(m => m.TelephoneNumber, new { @class = "form-control", placeholder = "" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.TelephoneNumber)</span>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    @Html.TextAreaFor(m => m.ContactMessage, new { @class = "form-control", style="height:150px;", placeholder = "" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.ContactMessage)</span>
+                </div>
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            }
+        </div>
+        <div class="col-xs-12 col-md-8">
+            <br/>
+            <div>
+                <iframe width="300"
+                        height="250"
+                        frameborder="0" style="border:0"
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAKjGL_NE3lPUuCQG03cDi2MGz-oPwiPeg&q=111+w+main+street,kent+OH" allowfullscreen></iframe>
+            </div>
+            <address>
+                111 W Main St<br />
+                Kent, OH 44444<br /><br />
+                Sales: 111-111-1111<br />
+                Service: 111-111-1112
+            </address>
+        </div>
+    </div>
+</div>
+

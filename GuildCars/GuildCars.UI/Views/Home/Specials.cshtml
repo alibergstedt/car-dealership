@@ -1,0 +1,25 @@
+﻿@model List<GuildCars.Models.Tables.Promo>
+
+@{
+    ViewBag.Title = "Specials";
+}
+
+<div class="row">
+    <h2>Specials</h2>
+    <br />
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @foreach (var promo in Model)
+        {
+            <div class="col-xs-12 panel panel-default">
+                <div class="panel-body">
+                    <p class="pull-left"><img src="@Url.Content("~/Images/" + promo.ImageFileName)" /></p>
+                    <h3>@promo.PromotionName</h3>
+                    <p>@promo.PromotionDescription</p>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

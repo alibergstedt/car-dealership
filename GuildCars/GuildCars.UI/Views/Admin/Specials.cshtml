@@ -1,0 +1,65 @@
+﻿@model GuildCars.UI.Models.PromoViewModel
+
+@{
+    ViewBag.Title = "Specials";
+}
+
+<div class="row">
+    <br />
+    <h3>Specials</h3>
+    <br />
+</div>
+<div class="row">
+    <div class="col-xs-12 panel panel-default" style="margin:0 20px;padding-bottom:20px;">
+        <div class="panel-body"></div>
+        @if (TempData["Message"] != null)
+            {
+            <p class="alert alert-success"> @TempData["Message"] </p>
+        }
+        <div class="col-xs-12 col-md-4" id="addPromoForm">
+            
+            @using (Html.BeginForm("Specials", "Admin", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Title</label>
+                        <div class="col-sm-9" style="padding-bottom:10px">
+                            @Html.TextBoxFor(m => m.PromotionName, new { @class = "form-control", placeholder = "" })
+                            <span class="text-danger">@Html.ValidationMessageFor(m => m.PromotionName)</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Message</label>
+                        <div class="col-sm-9" style="padding-bottom:10px">
+                            @Html.TextAreaFor(m => m.PromotionDescription, new { @class = "form-control", style = "height:150px;", placeholder = "" })
+                            <span class="text-danger">@Html.ValidationMessageFor(m => m.PromotionDescription)</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-default">Save</button>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    <br />
+    @foreach (var promo in Model.Promos)
+    {
+        <div class="col-xs-12 panel panel-default">
+            <div class="panel-body">
+                <p class="pull-left"><img src="@Url.Content("~/Images/" + promo.ImageFileName)" /></p>
+                <h3>@promo.PromotionName</h3>
+                @using (Html.BeginForm("DeleteSpecial", "Admin", FormMethod.Post))
+                {
+                    @Html.Hidden("PromoCodeId", promo.PromoCodeId)
+                    <button class="btn btn-danger pull-right" onclick="return confirm('Are you sure you want to delete this favorite?');">Delete</button>
+                }
+                <p>@promo.PromotionDescription</p>
+            </div>
+        </div>
+    }
+</div>

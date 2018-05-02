@@ -1,0 +1,17 @@
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\GuildCars.Test.dll.config
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\GuildCars.Test.dll
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\GuildCars.Test.pdb
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\GuildCars.Data.dll
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\GuildCars.Models.dll
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\nunit.framework.dll
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\GuildCars.Data.pdb
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\GuildCars.Models.pdb
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\nunit.framework.xml
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\obj\Debug\GuildCars.Tests.csprojResolveAssemblyReference.cache
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\obj\Debug\GuildCars.Test.dll
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\obj\Debug\GuildCars.Test.pdb
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\NUnit3.TestAdapter.dll
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\NUnit3.TestAdapter.pdb
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\nunit.engine.dll
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\nunit.engine.api.dll
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Test\bin\Debug\Mono.Cecil.dll

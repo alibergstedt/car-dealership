@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Quick Links</h2>
+<br/>
+<div class="row">
+    <div class="col-xs-12 col-sm-4">
+        <p>@Html.ActionLink("Search Inventory", "Vehicles", "Admin", null, new { @class = "btn btn-default btn-large" })</p>
+        <p>@Html.ActionLink("Add Vehicle", "AddVehicle", "Admin", null, new { @class = "btn btn-default btn-large" })</p>
+        <p>@Html.ActionLink("View Users", "Users", "Admin", null, new { @class = "btn btn-default btn-large" })</p>
+        <p>@Html.ActionLink("Add User", "AddUser", "Admin", null, new { @class = "btn btn-default btn-large" })</p>
+        <p>@Html.ActionLink("Change Password", "ChangePassword", "Account", null, new { @class = "btn btn-default btn-large" })</p>
+    </div>
+    <div class="col-xs-12 col-sm-4">        
+        <p>@Html.ActionLink("Add/View Car Make", "Makes", "Admin", null, new { @class = "btn btn-default btn-large" })</p>
+        <p>@Html.ActionLink("Add/View Car Models", "Models", "Admin", null, new { @class = "btn btn-default btn-large" })</p>
+        <p>@Html.ActionLink("Add/View Specials", "Specials", "Admin", null, new { @class = "btn btn-default btn-large" })</p>
+        <p>@Html.ActionLink("View Reports", "Index", "Reports", null, new { @class = "btn btn-default btn-large" })</p>
+    </div>
+</div>
+

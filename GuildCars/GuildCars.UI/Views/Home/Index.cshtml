@@ -1,0 +1,58 @@
+﻿@model GuildCars.UI.Models.HomePromoViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <br/>
+    <div id="jumbotronCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <a class="d-block img-fluid" href='@Url.Action("Specials", "Home")'>
+                    <h1>@Model.Promo[0].PromotionName</h1>
+                    <p>@Model.Promo[0].PromotionDescription</p>
+                </a>
+            </div>
+            @for (int i = 1; i < Model.Promo.Count; i++)
+            {
+                <div class="item">
+                    <a class="d-block img-fluid" href='@Url.Action("Specials", "Home")'>
+                        <h1>@Model.Promo[i].PromotionName</h1>
+                        <p>@Model.Promo[i].PromotionDescription</p>
+                    </a>
+                </div>
+            }
+        </div>
+        <a class="left carousel-control" href="#jumbotronCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#jumbotronCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <hr/>
+    <h3>Featured Vehicles</h3>
+    <br/>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @foreach(var car in Model.CarDetails)
+        {
+            <a href='@Url.Action("Details", "Inventory", new { id = car.CarId}, null)'>
+            <div class="col-xs-12 col-md-6 col-md-3 featuredCars panel panel-default">
+                <div class="panel-body">
+                <p><img src="@Url.Content("~/Images/" + car.ImageFileName)" /></p>
+                <p>@car.CarYear @car.CarMakeName @car.CarModelName</p>
+                <p>@car.CarPrice.ToString("c")</p>
+                </div>
+            </div>
+            </a>
+        }
+    </div>
+</div>

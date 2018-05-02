@@ -1,0 +1,68 @@
+﻿@model GuildCars.Models.Queries.InventoryReportItem
+
+@{
+    ViewBag.Title = "Inventory";
+}
+
+<div class="row">
+    <hr />
+    <h2>Featured Vehicles</h2>
+    <br />
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h3>New Vehicles</h3>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Make</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Stock Value</th>
+                </tr>
+            </thead>
+                <tbody>
+                    @foreach (var car in Model.inventoryNew)
+                {
+                        <tr>
+                            <td>@car.CarYear</td>
+                            <td>@car.CarMakeName</td>
+                            <td>@car.CarModelName</td>
+                            <td>@car.Count</td>
+                            <td>@car.StockValue</td>
+                        </tr>
+                    }
+                </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Used Vehicles</h3>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Make</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Stock Value</th>
+                </tr>
+            </thead>
+                <tbody>
+                    @foreach (var car in Model.inventoryUsed)
+                {
+                        <tr>
+                            <th scope="row">@car.CarYear</th>
+                            <td>@car.CarMakeName</td>
+                            <td>@car.CarModelName</td>
+                            <td>@car.Count</td>
+                            <td>@car.StockValue</td>
+                        </tr>
+                    }
+                </tbody>
+        </table>
+    </div>
+</div>
+

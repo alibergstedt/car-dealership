@@ -1,0 +1,90 @@
+﻿@model GuildCars.Models.Tables.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Vehicle Details</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p style="font-weight:bold;">@Model.CarYear @Model.CarMakeName @Model.CarModelName</p>
+                </div>
+            </div>
+            <div class="row"></div>
+            <div class="col-xs-12 col-md-2">
+                <p><img src="@Url.Content("~/Images/" + Model.ImageFileName)" /></p>
+            </div>
+            <div class="col-xs-12 col-md-10">
+                <table class="carTable">
+                    <tbody>
+                        <tr>
+                            <td>Body Style:</td>
+                            <td>@Model.BodyStyle</td>
+                            <td>Interior:</td>
+                            <td>@Model.InteriorColor</td>
+                            <td>Sale Price:</td>
+                            <td>
+                                @if (Model.CarSalePrice == 0M)
+                                {
+                                    <text>n/a</text>
+                                }
+                                else
+                                {
+                                    @Model.CarSalePrice
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Trans:</td>
+                            <td>@Model.Transmission</td>
+                            <td>Mileage:</td>
+                            <td>@Model.Mileage</td>
+                            <td>MSRP:</td>
+                            <td>@Model.CarPrice</td>
+                        </tr>
+                        <tr>
+                            <td>Color:</td>
+                            <td>@Model.CarColor</td>
+                            <td>VIN #:</td>
+                            <td>@Model.VinNumber</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:20px;"><strong>Description: </strong> @Model.CarDescription</p>
+            </div>
+            <button id="contactButton" class="btn btn-default pull-right">@Html.ActionLink("Contact Us", "Contact", "Home", new { vinNumber = @Model.VinNumber }, null)</button>
+            <button id="soldButton" class="btn btn-default disabled pull-right">Sold / Unavailable</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        var isSold = @Model.IsSold.ToString().ToLower();
+
+        $(document).ready(function () {
+            toggleSold();
+        });
+
+        function toggleSold() {
+            if (isSold == true) {
+                $('#soldButton').show();
+                $('#contactButton').hide();
+            }
+            else{                
+                $('#contactButton').show();
+                $('#soldButton').hide();
+            }
+        }
+        
+    </script>
+
+}

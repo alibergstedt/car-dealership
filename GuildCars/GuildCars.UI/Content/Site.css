@@ -1,0 +1,91 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#jumbotronCarousel{
+    background-color:#f1f1f1;
+    color:#000;
+    padding:50px 180px;
+    height:300px;
+    font-size:200%;
+}
+
+#jumbotronCarousel a, #jumbotronCarousel a:hover, #jumbotronCarousel a:active, #jumbotronCarousel a:visited {
+    color: #474747;
+    text-decoration: none;
+}
+
+.carousel-control.right, .carousel-control.left {
+    background-image:none;
+}
+
+.carousel-control {
+    text-shadow:none;
+}
+
+.featuredCars{
+    text-align: center;
+    margin: 10px;
+}
+
+table.carTable > tbody > tr > td:nth-child(2n+1){
+    padding-right: 10px;
+    font-weight:bold;
+}
+
+table.carTable > tbody > tr > td:nth-child(2n+2){
+    padding-right: 30px;
+}
+
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:active{
+    color: #000;
+}
+
+.navbar-inverse {
+    background: #fff;
+    border: 0;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a{
+    text-shadow: none;
+}
+
+form > li {
+    float:left;
+    display:inline-block;
+    padding:15px;
+}
+
+form > li a{
+    font-size: 14px;
+    color: black;
+}
+
+ form > li a:hover, form > li a:visited, form > li a:active{
+    font-size: 14px;
+    color: black;
+    text-decoration:none;
+}

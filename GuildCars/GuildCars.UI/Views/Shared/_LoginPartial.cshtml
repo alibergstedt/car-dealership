@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated && User.IsInRole("Sales"))
+{
+    @Html.AntiForgeryToken()
+
+    <li>
+        @Html.ActionLink("Sales", "Index", "Sales", routeValues: null, htmlAttributes: new { title = "" })
+    </li>
+}
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    @Html.AntiForgeryToken()
+
+    <li>
+        @Html.ActionLink("Sales", "Index", "Sales", routeValues: null, htmlAttributes: new { title = "" })
+    </li>
+    <li>
+        @Html.ActionLink("Admin", "Index", "Admin", routeValues: null, htmlAttributes: new { title = "" })
+    </li>
+}

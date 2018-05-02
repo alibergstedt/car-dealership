@@ -1,0 +1,5 @@
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Models\bin\Debug\GuildCars.Models.dll
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Models\bin\Debug\GuildCars.Models.pdb
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Models\obj\Debug\GuildCars.Models.csprojResolveAssemblyReference.cache
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Models\obj\Debug\GuildCars.Models.dll
+C:\Users\bergs\onedrive\documents\visual studio 2015\Projects\GuildCars\GuildCars.Models\obj\Debug\GuildCars.Models.pdb

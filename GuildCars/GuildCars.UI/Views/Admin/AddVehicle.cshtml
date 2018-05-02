@@ -1,0 +1,132 @@
+﻿@model GuildCars.UI.Models.AddVehicleViewModel
+
+@{
+    ViewBag.Title = "AddVehicle";
+}
+
+<div class="row">
+    <h2>Add Vehicle</h2>
+    @if (TempData["Message"] != null)
+            {
+        <p class="alert alert-success"> @TempData["Message"] </p>
+    }
+    @using (Html.BeginForm("AddVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmAddVehicle" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(m => m.Car.IsSold)
+        @Html.HiddenFor(m => m.Car.CarMakeName)
+        @Html.HiddenFor(m => m.Car.CarModelName)
+        <div class="col-xs-12 col-xs-6 col-md-4">
+            <div class="form-group">
+                <label>Make</label>
+                @Html.DropDownListFor(m => m.Car.CarMakeId, Model.CarMakeName, "-- Select A Car Make --" , new { @id = "carMake", @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.CarMakeId)</span>
+            </div>
+            <div class="form-group">
+                <label>Type</label>
+                @Html.DropDownListFor(m => m.Car.CategoryId, Model.CategoryName, "-- Select A Category --", new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.CategoryId)</span>
+            </div>
+            <div class="form-group">
+                <label>Year</label>
+                @Html.TextBoxFor(m => m.Car.CarYear, new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.CarYear)</span>
+            </div>
+            <div class="form-group">
+                <label>Color</label>
+                @Html.DropDownListFor(m => m.Car.CarColor, Model.CarColor, "-- Select A Car Color --", new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.CarColor)</span>
+            </div>
+            <div class="form-group">
+                <label>Mileage</label>
+                @Html.TextBoxFor(m => m.Car.Mileage, new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.Mileage)</span>
+            </div>
+            <div class="form-group">
+                <label>MSRP</label>
+                @Html.TextBoxFor(m => m.Car.CarPrice, new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.CarPrice)</span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-xs-6 col-md-4">
+            <div class="form-group">
+                <label>Model</label>
+                @Html.DropDownListFor(m => m.Car.CarModelId, Model.CarModelName, "-- Select A Car Model --", new { @id = "carModel", @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.CarModelName)</span>
+            </div>
+            <div class="form-group">
+                <label>Body Style</label>
+                @Html.DropDownListFor(m => m.Car.BodyStyle, Model.BodyStyle, "-- Select A Body Style --", new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.BodyStyle)</span>
+            </div>
+            <div class="form-group">
+                <label>Transmission</label>
+                @Html.DropDownListFor(m => m.Car.Transmission, Model.Transmission, "-- Select A Transmission --", new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.Transmission)</span>
+            </div>
+            <div class="form-group">
+                <label>Interior</label>
+                @Html.DropDownListFor(m => m.Car.InteriorColor, Model.InteriorColor, "-- Select An Interior Color --", new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.InteriorColor)</span>
+            </div>
+            <div class="form-group">
+                <label>VIN #</label>
+                @Html.TextBoxFor(m => m.Car.VinNumber, new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.VinNumber)</span>
+            </div>
+            <div class="form-group">
+                <label>Sale Price</label>
+                @Html.TextBoxFor(m => m.Car.CarSalePrice, new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.CarSalePrice)</span>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label>Description</label>
+                @Html.TextAreaFor(m => m.Car.CarDescription, new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.CarDescription)</span>
+            </div>
+            <div class="form-group">
+                <label>Picture</label>
+                <input id="ImageUpload" name="ImageUpload" type="file" class="form-control-file" />
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Car.ImageFileName)</span>
+            </div>              
+            <button class="btn btn-primary">Save</button>
+        </div>        
+    }
+</div>
+
+@section Scripts
+{
+    <script>
+    $(function() {
+        $('#carMake').change(function() {
+            var carMakeId = $(this).val();
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:61053/api/admin/addvehicle/?carMakeId=' + carMakeId,
+            success: function (results) {
+                $('#carModel').empty();
+                $('#carModel').append('<option value="">-- Select A Car Model --</option>');
+
+                $.each(results, function (index, data) {
+                    // loop through and fill the dropdown
+                    var html =
+                    '<option value="' + data.carModelId + '">' + data.carModelName +
+                    '</option>';
+
+                    
+                    $('#carModel').append(html.toString());
+                });
+            },
+            error: function () {
+                alert('Error performing search, try again later!')
+            }
+        });
+
+        });
+    });
+</script>
+}

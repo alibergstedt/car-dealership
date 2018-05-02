@@ -1,0 +1,88 @@
+﻿@model GuildCars.UI.Models.SalesReportViewModel
+
+@{
+    ViewBag.Title = "Sales";
+}
+
+<div class="row">
+    <h2>Sales Report</h2>
+    <div class="col-xs-12">
+        <form id="searchForm" class="form-inline table-bordered" style="padding:10px;">
+            <h4>Filters</h4>
+            <div class="form-group">
+                <label>User</label>
+                @Html.DropDownListFor(m => m.SalesPerson, Model.SalesPerson, " - All - ", new { @id = "salesPerson" , @class = "form-control" })
+            </div>
+            <div class="form-group" style="padding-right:10px">
+                <label for="fromDate">From Date</label>
+                <input type="text" class="form-control" id="fromDate" placeholder="">
+            </div>
+            <div class="form-group" style="padding-right:10px">
+                <label for="toDate">To Date</label>
+                <input type="text" class="form-control" id="toDate" placeholder="">
+            </div>
+            <br />
+            <br />
+            <button style="width:25%;" onclick="search()" class="btn btn-default center-block">Search</button>
+        </form>
+    </div>
+</div>
+<div class="row" id="searchTable" style="display:none;">
+    <br/>
+    <h4>Search Results</h4>
+    <table class="col-xs-12 table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>User</th>
+                <th>Total Sales</th>
+                <th>Total Vehicles</th>
+            </tr>
+        </thead>
+        <tbody id="searchResults">
+
+        </tbody>
+    </table>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#searchForm").submit(function (e) {  //stops form from submitting to the server
+                search();
+                return false;
+            });
+        });
+
+        function search() {
+            var params;
+
+            params = 'salesPerson=' + $('#salesPerson').val() + '&fromDate=' + $('#fromDate').val() + '&toDate=' + $('#toDate').val();
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:61053/api/reports/sales?' + params,
+                success: function (results) {
+                    $('#searchResults').empty();
+                    $('#searchTable').show();
+
+                    $.each(results, function (index, sale) {
+                        var html =
+                        '<tr>' +
+                        '<td>' + sale.salesPerson + '</td>' +
+                        '<td>' + sale.totalSales + '</td>' +
+                        '<td>' + sale.totalVehicles + '</td>' +
+                        '</tr>';
+
+                        $('#searchResults').append(html.toString());
+                    });
+
+                },
+                error: function () {
+                    alert('Error performing search, try again later!')
+                }
+            });
+        }
+    </script>
+}
+

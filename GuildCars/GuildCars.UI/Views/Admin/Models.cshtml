@@ -1,0 +1,66 @@
+﻿@model GuildCars.UI.Models.AddModelViewModel
+
+@{
+    ViewBag.Title = "Models";
+}
+
+<div class="row">
+    <hr />
+    <h2>Models</h2>
+    <br />
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <p id="statusMessage">
+
+        </p>
+        @using (Html.BeginForm("Models", "Admin", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.CarMakeId)
+            @Html.HiddenFor(m => m.CarModelId)
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="col-xs-12 form-inline table-bordered" style="padding:10px;margin:10px auto;">
+                <div class="form-group">
+                    <label style="padding:10px;">New Model</label>
+                    @Html.TextBoxFor(m => m.CarModelName, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.CarModelName)</span>
+                </div>
+                <div class="form-group">
+                    <label style="padding:10px;">Make</label>
+                    @Html.DropDownListFor(c => c.CarMakeName, Model.Makes, new { @class = "form-control", @id = "make-dropdown" })
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.CarMakeName)</span>
+                </div>
+                <button style="width:10%;margin-left:10px" class="btn btn-default">Save</button>
+                <br />
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-6">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Make</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Date Added</th>
+                    <th scope="col">User</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var carModel in Model.Models)
+                {
+                    <tr>
+                        <td>@carModel.CarMakeName</td>
+                        <td>@carModel.CarModelName</td>
+                        <td>@carModel.DateCreated.ToShortDateString()</td>
+                        <td>@ViewBag.UserName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

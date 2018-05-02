@@ -1,0 +1,77 @@
+﻿@model GuildCars.UI.Models.AddCarViewModel
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="row">
+    <h2>Add Vehicle</h2>
+    @using (Html.BeginForm("Add", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmAddVehicle" }))
+    {
+        @Html.HiddenFor(m => m.car.IsFeatured)
+        @Html.HiddenFor(m => m.car.IsSold)
+        <div class="col-xs-12 col-xs-6 col-md-4">
+            <div class="form-group">
+                <label>Make</label>
+                @Html.DropDownListFor(m => m.CarMakeName, Model.CarMakeName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Type</label>
+                @Html.DropDownListFor(m => m.CategoryName, Model.CategoryName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Year</label>
+                @Html.TextBoxFor(m => m.car.CarYear, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Color</label>
+                @Html.DropDownListFor(m => m.CarColor, Model.CarColor, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Mileage</label>
+                @Html.TextBoxFor(m => m.car.Mileage, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>MSRP</label>
+                @Html.TextBoxFor(m => m.car.CarPrice, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-xs-12 col-xs-6 col-md-4">
+            <div class="form-group">
+                <label>Model</label>
+                @Html.DropDownListFor(m => m.CarModelName, Model.CarModelName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Body Style</label>
+                @Html.DropDownListFor(m => m.BodyStyle, Model.BodyStyle, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Transmission</label>
+                @Html.DropDownListFor(m => m.Transmission, Model.Transmission, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Interior</label>
+                @Html.DropDownListFor(m => m.InteriorColor, Model.InteriorColor, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>VIN #</label>
+                @Html.TextBoxFor(m => m.car.VinNumber, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Sale Price</label>
+                @Html.TextBoxFor(m => m.car.CarSalePrice, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label>Description</label>
+                @Html.TextAreaFor(m => m.car.CarDescription, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Picture</label>
+                <input id="ImageUpload" name="ImageUpload" type="file" class="form-control-file" />
+            </div>
+            <button class="btn btn-primary">Save</button>
+        </div>        
+    }
+</div>
